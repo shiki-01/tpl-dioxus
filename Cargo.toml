@@ -1,5 +1,5 @@
 [package]
-name = "tmp-dioxus"
+name = "tpl-dioxus"
 version = "0.1.0"
 authors = ["shiki <0110shiki@gmail.com>"]
 edition = "2021"
