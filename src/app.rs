@@ -1,7 +1,7 @@
 
 use dioxus::prelude::*;
 
-const FAVICON: Asset = asset!("/assets/favicon.ico");
+const FAVICON: Asset = asset!("/assets/icons/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 
 #[component]
