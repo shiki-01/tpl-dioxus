@@ -1,7 +1,6 @@
-
 use dioxus::prelude::*;
 
-const FAVICON: Asset = asset!("/assets/icons/favicon.ico");
+const FAVICON: Asset = asset!("/icons/favicon.ico");
 const MAIN_CSS: Asset = asset!("/assets/main.css");
 
 #[component]
@@ -14,7 +13,6 @@ pub fn App() -> Element {
         document::Link { rel: "stylesheet", href: MAIN_CSS }
         document::Link { rel: "stylesheet", href: "https://cdn.master.co/normal.css" }
         document::Script { src: "https://cdn.master.co/css-runtime@rc" }
-        Configure {}
 
         main {
             h1 {
@@ -22,12 +20,5 @@ pub fn App() -> Element {
                 "Welcome to tpl-dioxus!"
             }
         }
-    }
-}
-
-#[component]
-fn Configure() -> Element {
-    rsx! {
-        
     }
 }
