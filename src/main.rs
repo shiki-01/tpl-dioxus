@@ -7,11 +7,8 @@ use std::{env::current_dir, path::PathBuf};
 mod app;
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let icon = current_dir()?
-        .join("icons/favicon.ico")
-        .canonicalize()
-        .ok()
-        .and_then(|p| load_icon(p).ok());
+    let icon_path = current_dir()?.join("icons/favicon.ico");
+    let icon = load_icon(icon_path).ok();
 
     LaunchBuilder::desktop()
         .with_cfg(
