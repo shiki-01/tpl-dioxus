@@ -2,13 +2,13 @@
 
 use dioxus::prelude::LaunchBuilder;
 use dioxus_desktop::{tao::window::Icon, Config, WindowBuilder};
-use std::{env::current_dir, path::PathBuf};
 
 mod app;
 
+const ICON_BYTES: &[u8] = include_bytes!("../icons/favicon.ico");
+
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let icon_path = current_dir()?.join("icons/favicon.ico");
-    let icon = load_icon(icon_path).ok();
+    let icon = load_icon_from_bytes(ICON_BYTES).ok();
 
     LaunchBuilder::desktop()
         .with_cfg(
@@ -22,8 +22,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-fn load_icon(path: PathBuf) -> Result<Icon, Box<dyn std::error::Error>> {
-    let img = image::open(path)?.into_rgba8();
+fn load_icon_from_bytes(bytes: &[u8]) -> Result<Icon, Box<dyn std::error::Error>> {
+    let img = image::load_from_memory(bytes)?.into_rgba8();
     let (width, height) = img.dimensions();
     let raw_data = img.into_raw();
     Ok(Icon::from_rgba(raw_data, width, height)?)
